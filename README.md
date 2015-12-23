@@ -1,3 +1,5 @@
+:warning: __This is under development, do NOT use it yet__ :warning:
+
 # generator-jhipster-ci
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > JHipster module, Continuous Integration support in your JHipster application
