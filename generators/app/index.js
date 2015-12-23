@@ -17,15 +17,15 @@ var jhipsterFunc = {};
 module.exports = yeoman.generators.Base.extend({
 
   initializing: {
-    templates: function() {
+    templates: function (args) {
       this.composeWith('jhipster:modules', {
         options: {
           jhipsterVar: jhipsterVar,
           jhipsterFunc: jhipsterFunc
         }
-      })
+      });
     },
-    displayLogo: function() {
+    displayLogo: function () {
       console.log(chalk.green.bold(
         '        _ _   _ _           _                           \n' +
         '       | | | | (_)_ __  ___| |_ ___ _ __                \n' +
@@ -45,6 +45,66 @@ module.exports = yeoman.generators.Base.extend({
         '                      |___/                             \n'));
       console.log(chalk.white.bold('              http://jhipster.github.io\n'));
       console.log(chalk.white('Welcome to the ' + chalk.bold('JHipster Continuous Integration') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
+    }
+  },
+
+  prompting: function () {
+    var done = this.async();
+    var prompts = [
+      {
+        type: 'list',
+        name: 'ciType',
+        message: 'Please choose your continuous integration:',
+        choices: [
+          {name: 'None', value: 'none'},
+          {name: 'Travis-CI', value: 'travis'},
+          {name: 'CircleCI', value: 'circleci'}
+          // {name: 'drone.io', value: 'droneio'}
+        ],
+        default: 'none'
+      }
+    ];
+
+    this.prompt(prompts, function (props) {
+      this.props = props;
+      // To access props later use this.props.someOption;
+      this.ciType = props.ciType;
+      done();
+    }.bind(this));
+  },
+
+  writing: function () {
+    var done = this.async();
+
+    this.baseName = jhipsterVar.baseName;
+    this.packageName = jhipsterVar.packageName;
+    this.devDatabaseType = jhipsterVar.devDatabaseType;
+    this.prodDatabaseType = jhipsterVar.prodDatabaseType;
+    this.searchEngine = jhipsterVar.searchEngine;
+    this.buildTool = jhipsterVar.buildTool;
+    this.frontendBuilder = jhipsterVar.frontendBuilder;
+
+    // Create continuous integration files
+    if (this.ciType == "travis") {
+      this.template('.travis.yml', '.travis.yml', this, {});
+    }
+
+    if (this.ciType == "circleci") {
+      this.template('circle.yml', 'circle.yml', this, {});
+    }
+    done();
+  },
+
+  end: function () {
+    switch (this.ciType) {
+      case 'travis': {
+        console.log('\n' + chalk.bold.green('##### USAGE #####'));
+        break;
+      }
+      case 'circleci': {
+        console.log('\n' + chalk.bold.green('##### USAGE #####'));
+        break;
+      }
     }
   }
 });
