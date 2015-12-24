@@ -11,6 +11,9 @@
   <a href="https://travis-ci.org/">
     <img src="https://avatars3.githubusercontent.com/u/639823?v=3&s=128">
   </a>
+  <a href="https://circleci.com/">
+    <img src="https://avatars3.githubusercontent.com/u/1231870?v=3&s=128">
+  </a>
 </div>
 
 
