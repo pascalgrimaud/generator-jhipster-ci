@@ -9,10 +9,10 @@
     <img src="https://github.com/pascalgrimaud/generator-jhipster-ci/raw/master/images/logo-jhipster.png">
   </a>
   <a href="https://travis-ci.org/">
-    <img src="https://avatars3.githubusercontent.com/u/639823?v=3&s=128">
+    <img src="https://github.com/pascalgrimaud/generator-jhipster-ci/raw/master/images/travis.png">
   </a>
   <a href="https://circleci.com/">
-    <img src="https://avatars3.githubusercontent.com/u/1231870?v=3&s=128">
+    <img src="https://github.com/pascalgrimaud/generator-jhipster-ci/raw/master/images/circleci.png">
   </a>
 </div>
 
