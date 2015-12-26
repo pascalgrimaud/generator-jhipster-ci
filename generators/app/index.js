@@ -57,7 +57,8 @@ module.exports = yeoman.generators.Base.extend({
         choices: [
           {name: 'None', value: 'none'},
           {name: 'Travis-CI', value: 'travis'},
-          {name: 'CircleCI', value: 'circleci'}
+          {name: 'CircleCI', value: 'circleci'},
+          {name: 'Gitlab-CI', value: 'gitlabci'}
           // {name: 'drone.io', value: 'droneio'}
         ],
         default: 'none'
@@ -91,6 +92,11 @@ module.exports = yeoman.generators.Base.extend({
     if (this.ciType == "circleci") {
       this.template('circle.yml', 'circle.yml', this, {});
     }
+
+    if (this.ciType == "gitlabci") {
+      this.template('.gitlab-ci.yml', '.gitlab-ci.yml', this, {});
+    }
+
     done();
   },
 

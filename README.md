@@ -12,6 +12,9 @@
   <a href="https://circleci.com/">
     <img width=93px src="https://github.com/pascalgrimaud/generator-jhipster-ci/raw/master/images/circleci.png">
   </a>
+  <a href="https://about.gitlab.com/gitlab-ci/">
+      <img width=93px src="https://github.com/pascalgrimaud/generator-jhipster-ci/raw/master/images/gitlabci.png">
+    </a>
 </div>
 
 # Introduction
