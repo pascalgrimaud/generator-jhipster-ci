@@ -98,10 +98,14 @@ module.exports = yeoman.generators.Base.extend({
     switch (this.ciType) {
       case 'travis': {
         console.log('\n' + chalk.bold.green('##### USAGE #####'));
+        console.log('To add your project to a Continuous Integration:');
+        console.log('- go to ' + chalk.green('https://travis-ci.org/\n'));
         break;
       }
       case 'circleci': {
         console.log('\n' + chalk.bold.green('##### USAGE #####'));
+        console.log('To add your project to a Continuous Integration:');
+        console.log('- go to ' + chalk.green('https://circleci.com/\n'));
         break;
       }
     }
