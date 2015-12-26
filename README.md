@@ -23,6 +23,7 @@ This is a [JHipster](http://jhipster.github.io/) module, that is meant to be use
 
 - [Travis-CI](https://travis-ci.org/)
 - [CircleCI](https://circleci.com/)
+- [Gitlab-CI](https://about.gitlab.com/gitlab-ci/)
 
 # Prerequisites
 
