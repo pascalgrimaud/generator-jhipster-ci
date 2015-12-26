@@ -16,17 +16,22 @@
   </a>
 </div>
 
+# Introduction
 
+This is a [JHipster](http://jhipster.github.io/) module, that is meant to be used in a JHipster application. This module is used to generate yaml files for Continuous Integration with :
 
-## Prerequisites
+- [Travis-CI](https://travis-ci.org/)
+- [CircleCI](https://circleci.com/)
+
+# Prerequisites
 
 As this is a [JHipster](http://jhipster.github.io/) module, we expect you have JHipster and its related tools already installed:
 
 - [Installing JHipster](https://jhipster.github.io/installation.html)
 
+Depending on the Continuous Integration you choose, you need to have an account on the Cloud Continuous Integration.
 
-
-## Installation
+# Installation
 
 To install this module:
 
@@ -39,10 +44,7 @@ To update this module:
 npm update -g generator-jhipster-ci
 ```
 
-
-## Usage
-
-This is a [JHipster](http://jhipster.github.io/) module, that is meant to be use in a JHipster application.
+# Usage
 
 To run the module on a JHipster generated application:
 
@@ -50,9 +52,7 @@ To run the module on a JHipster generated application:
 yo jhipster-ci
 ```
 
-
-
-## License
+# License
 
 Apache-2.0 © [Pascal Grimaud](https://twitter.com/pascalgrimaud)
 
