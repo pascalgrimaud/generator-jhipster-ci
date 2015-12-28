@@ -1,7 +1,8 @@
-image: jdubois/jhipster-docker:latest
+image: moifort/jhipster-gitlab-ci-image:2.26.1-cache
 
 before_script:
-  - npm install phantomjs
+  - cp -r /root/node_modules .
+  - npm install
 
 stages:
   - build
