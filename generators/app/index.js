@@ -94,6 +94,7 @@ module.exports = yeoman.generators.Base.extend({
     }
 
     if (this.ciType == "gitlabci") {
+      jhipsterFunc.addBowerrcParameter('allow_root', true);
       this.template('.gitlab-ci.yml', '.gitlab-ci.yml', this, {});
     }
 
