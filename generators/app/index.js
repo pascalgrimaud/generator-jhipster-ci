@@ -25,7 +25,7 @@ module.exports = yeoman.generators.Base.extend({
       });
     },
     displayLogo: function () {
-      console.log(' \n' +
+      this.log(' \n' +
         chalk.green.bold('        _ _   _ _           _                           \n') +
         chalk.green.bold('       | | | | (_)_ __  ___| |_ ___ _ __                \n') +
         chalk.green.bold('    _  | | |_| | | \'_ \\/ __| __/ _ \\ \'__|               \n') +
@@ -42,8 +42,8 @@ module.exports = yeoman.generators.Base.extend({
         chalk.green.bold('    | || | | | ||  __/ (_| | | | (_| | |_| | (_) | | | |\n') +
         chalk.green.bold('   |___|_| |_|\\__\\___|\\__, |_|  \\__,_|\\__|_|\\___/|_| |_|\n') +
         chalk.green.bold('                      |___/                             \n'));
-      console.log(chalk.white.bold('              http://jhipster.github.io\n'));
-      console.log(chalk.white('Welcome to the ' + chalk.bold('JHipster Continuous Integration') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
+      this.log(chalk.white.bold('              http://jhipster.github.io\n'));
+      this.log(chalk.white('Welcome to the ' + chalk.bold('JHipster Continuous Integration') + ' Generator! ' + chalk.yellow('v' + packagejs.version + '\n')));
     }
   },
 
@@ -104,15 +104,15 @@ module.exports = yeoman.generators.Base.extend({
   end: function () {
     switch (this.ciType) {
       case 'travis': {
-        console.log('\n' + chalk.bold.green('##### USAGE #####'));
-        console.log('To add your project to a Continuous Integration:');
-        console.log('- go to ' + chalk.green('https://travis-ci.org/\n'));
+        this.log('\n' + chalk.bold.green('##### USAGE #####'));
+        this.log('To add your project to a Continuous Integration:');
+        this.log('- go to ' + chalk.green('https://travis-ci.org/\n'));
         break;
       }
       case 'circleci': {
-        console.log('\n' + chalk.bold.green('##### USAGE #####'));
-        console.log('To add your project to a Continuous Integration:');
-        console.log('- go to ' + chalk.green('https://circleci.com/\n'));
+        this.log('\n' + chalk.bold.green('##### USAGE #####'));
+        this.log('To add your project to a Continuous Integration:');
+        this.log('- go to ' + chalk.green('https://circleci.com/\n'));
         break;
       }
     }
