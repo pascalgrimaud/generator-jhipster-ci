@@ -1,6 +1,6 @@
 {
     "name": "generator-jhipster-ci",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "JHipster module, Continuous Integration support in your JHipster application",
     "keywords": [
         "yeoman-generator",
