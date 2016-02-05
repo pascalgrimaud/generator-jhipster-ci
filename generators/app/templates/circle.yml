@@ -24,9 +24,4 @@ test:
 <%_ if (buildTool == 'gradle') { _%>
     - ./gradlew test
 <%_ } _%>
-<%_ if (frontendBuilder == 'grunt') { _%>
-    - grunt test
-<%_ } _%>
-<%_ if (frontendBuilder == 'gulp') { _%>
     - gulp test
-<%_ } _%>
