@@ -20,13 +20,6 @@ gradle-test:
   script: "./gradlew test"
 <%_ } _%>
 
-<%_ if (frontendBuilder == 'grunt') { _%>
-grunt-test:
-  stage: test
-  script: "grunt test"
-<%_ } _%>
-<%_ if (frontendBuilder == 'gulp') { _%>
 gulp-test:
   stage: test
   script: "gulp test"
-<%_ } _%>
