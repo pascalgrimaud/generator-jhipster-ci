@@ -22,7 +22,7 @@ test:
     - mvn test
 <%_ } _%>
 <%_ if (buildTool == 'gradle') { _%>
-    - ./gradlew test
+    - ./gradlew test --no-daemon
 <%_ } _%>
 <%_ if (frontendBuilder == 'grunt') { _%>
     - grunt test
