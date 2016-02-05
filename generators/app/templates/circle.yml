@@ -7,13 +7,7 @@ machine:
     version: 4.2.1
 dependencies:
   override:
-    - npm install -g bower
-<%_ if (frontendBuilder == 'grunt') { _%>
-    - npm install -g grunt-cli
-<%_ } _%>
-<%_ if (frontendBuilder == 'gulp') { _%>
-    - npm install -g gulp
-<%_ } _%>
+    - npm install -g bower gulp
     - npm install
     - bower install
 test:

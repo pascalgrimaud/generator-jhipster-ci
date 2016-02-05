@@ -8,13 +8,7 @@ node_js:
 jdk:
   - oraclejdk8
 before_install:
-  - npm install -g bower
-<%_ if (frontendBuilder == 'grunt') { _%>
-  - npm install -g grunt-cli
-<%_ } _%>
-<%_ if (frontendBuilder == 'gulp') { _%>
-  - npm install -g gulp
-<%_ } _%>
+  - npm install -g bower gulp
 install:
   - npm install
   - bower install
