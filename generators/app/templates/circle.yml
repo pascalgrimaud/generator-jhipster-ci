@@ -16,6 +16,6 @@ test:
     - mvn test
 <%_ } _%>
 <%_ if (buildTool == 'gradle') { _%>
-    - ./gradlew test
+    - ./gradlew test --no-daemon
 <%_ } _%>
     - gulp test

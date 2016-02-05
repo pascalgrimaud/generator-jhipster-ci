@@ -17,7 +17,7 @@ maven-test:
 <%_ if (buildTool == 'gradle') { _%>
 gradle-test:
   stage: test
-  script: "./gradlew test"
+  script: "./gradlew test --no-daemon"
 <%_ } _%>
 
 gulp-test:
