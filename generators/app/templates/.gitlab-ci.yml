@@ -1,25 +1,100 @@
-image: moifort/jhipster-gitlab-ci-image:2.26.1-cache
+image: atomfrede/gitlab-ci-jhipster-stack
 
-before_script:
-  - cp -r /root/node_modules .
-  - npm install
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+    - node_modules
+    - .gradle/wrapper
+    - .gradle/caches
+    - .maven
 
 stages:
   - build
   - test
+  - package
+  - release
   - deploy
 
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+  - export MAVEN_USER_HOME=`pwd`/.maven
+  - npm install
+
+<%_ if (buildTool == 'gradle') { _%>
+gradle-build:
+    stage: build
+    script:
+        - ./gradlew compileJava -x check --no-daemon
+<%_ if (!skipClient) { _%>
+gulp-build:
+    stage: build
+    script:
+        - gulp build
+<%_ } _%>
+gradle-test:
+    stage: test
+    script:
+        - ./gradlew check --no-daemon
+    artifacts:
+        paths:
+            - build/reports/tests/*
+<%_ if (testFrameworks.indexOf('gatling') !== -1) { _%>
+gatling-test:
+    stage: test
+    allow_failure: true
+    script:
+        - ./gradlew gatlingRun -x cleanResources --no-daemon
+    before_script:
+        - npm install
+        - ./gradlew bootRun &
+    artifacts:
+        paths:
+            - build/reports/gatling/*
+<%_ } _%>
+gradle-repackage:
+    stage: package
+    script:
+        - ./gradlew bootRepackage -x check --no-daemon
+    artifacts:
+        paths:
+            - build/libs/*.war
+<%_ } _%>
 <%_ if (buildTool == 'maven') { _%>
+maven-build:
+  stage: build
+  script: ./mvnw compile -Dmaven.repo.local=$MAVEN_USER_HOME
+
+<%_ if (!skipClient) { _%>
+gulp-build:
+    stage: build
+    script:
+        - gulp build
+<%_ } _%>
 maven-test:
   stage: test
-  script: "mvn test"
+  script:
+      - ./mvnw test -Dmaven.repo.local=$MAVEN_USER_HOME
+  artifacts:
+      paths:
+        - target/surefire-reports/*
+<%_ if (testFrameworks.indexOf('gatling') !== -1) { _%>
+gatling-test:
+    stage: test
+    allow_failure: true
+    script:
+        - ./mvnw gatling:execute -Dmaven.repo.local=$MAVEN_USER_HOME
+    before_script:
+        - npm install
+        - ./mvnw &
+    artifacts:
+        paths:
+            - target/reports/gatling/*
 <%_ } _%>
-<%_ if (buildTool == 'gradle') { _%>
-gradle-test:
-  stage: test
-  script: "./gradlew test --no-daemon"
+maven-package:
+    stage: package
+    script:
+        - ./mvnw package -Dmaven.repo.local=$MAVEN_USER_HOME
+    artifacts:
+        paths:
+            - target/*.war
 <%_ } _%>
-
-gulp-test:
-  stage: test
-  script: "gulp test"

@@ -82,6 +82,8 @@ module.exports = yeoman.generators.Base.extend({
     this.prodDatabaseType = jhipsterVar.prodDatabaseType;
     this.searchEngine = jhipsterVar.searchEngine;
     this.buildTool = jhipsterVar.buildTool;
+    this.testFrameworks = jhipsterVar.testFrameworks;
+    this.skipClient = jhipsterVar.skipClient;
 
     // Create continuous integration files
     if (this.ciType == "travis") {
