@@ -1,13 +1,20 @@
 image: atomfrede/gitlab-ci-jhipster-stack
 
+<%_ if (buildTool == 'gradle') { _%>
 cache:
   key: "$CI_BUILD_REF_NAME"
   paths:
     - node_modules
     - .gradle/wrapper
     - .gradle/caches
+<%_ } _%>
+<%_ if (buildTool == 'maven') { _%>
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+    - node_modules
     - .maven
-
+<%_ } _%>
 stages:
   - build
   - test
@@ -88,7 +95,7 @@ gatling-test:
         - ./mvnw &
     artifacts:
         paths:
-            - target/reports/gatling/*
+            - target/gatling/*
 <%_ } _%>
 maven-package:
     stage: package
