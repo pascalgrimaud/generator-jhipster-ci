@@ -80,6 +80,7 @@ module.exports = yeoman.Base.extend({
 
         this.baseName = jhipsterVar.baseName;
         this.packageName = jhipsterVar.packageName;
+        this.applicationType = jhipsterVar.applicationType;
         this.devDatabaseType = jhipsterVar.devDatabaseType;
         this.prodDatabaseType = jhipsterVar.prodDatabaseType;
         this.searchEngine = jhipsterVar.searchEngine;

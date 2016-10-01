@@ -1,21 +1,39 @@
 machine:
-  services:
-    - docker
-  java:
-    version: oraclejdk8
-  node:
-    version: 4.2.1
+    services:
+        - docker
+    java:
+        version: oraclejdk8
+    node:
+        version: 4.5.0
 dependencies:
-  override:
-    - npm install -g bower gulp
-    - npm install
-    - bower install
+    <%_ if (applicationType !== 'microservice') { _%>
+    override:
+        - npm install -g npm
+        - npm install -g bower gulp
+        - node -v
+        - npm -v
+        - bower -v
+        - gulp -v
+        - java -version
+        - npm install
+    <%_ } else { _%>
+    override:
+        - java -version
+    <%_ } _%>
 test:
-  override:
-<%_ if (buildTool == 'maven') { _%>
-    - mvn test
+    override:
+<%_ if (buildTool === 'maven') { _%>
+        - ./mvnw clean
+        - ./mvnw test
+<%_ } else if (buildTool === 'gradle') { _%>
+        - ./gradlew clean
+        - ./gradlew test --no-daemon
 <%_ } _%>
-<%_ if (buildTool == 'gradle') { _%>
-    - ./gradlew test --no-daemon
+<%_ if (applicationType !== 'microservice') { _%>
+        - gulp test
 <%_ } _%>
-    - gulp test
+<%_ if (buildTool === 'maven') { _%>
+        - ./mvnw package -Pprod -DskipTests
+<%_ } else if (buildTool === 'gradle') { _%>
+        - ./gradlew bootRepackage -Pprod -x test
+<%_ } _%>
