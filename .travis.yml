@@ -1,5 +1,19 @@
+os:
+    - linux
+services:
+    - docker
 language: node_js
 node_js:
-  - v5
-  - v4
-  - '0.12'
+    - "4.5.0"
+cache:
+    directories:
+        - node_modules
+before_install:
+    - npm install -g npm
+    - npm install -g gulp-cli
+    - npm install -g yo
+install:
+    - npm install
+    - npm link
+script:
+    - gulp test

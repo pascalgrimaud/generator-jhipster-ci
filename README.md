@@ -6,9 +6,6 @@
   <a href="http://jhipster.github.io">
     <img src="https://github.com/pascalgrimaud/generator-jhipster-ci/raw/master/images/logo-jhipster.png">
   </a>
-  <a href="https://travis-ci.org/">
-    <img width=100px src="https://github.com/pascalgrimaud/generator-jhipster-ci/raw/master/images/travis.png">
-  </a>
   <a href="https://circleci.com/">
     <img width=93px src="https://github.com/pascalgrimaud/generator-jhipster-ci/raw/master/images/circleci.png">
   </a>
