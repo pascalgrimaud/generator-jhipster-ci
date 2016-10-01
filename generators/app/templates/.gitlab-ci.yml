@@ -2,30 +2,32 @@ image: atomfrede/gitlab-ci-jhipster-stack
 
 <%_ if (buildTool == 'gradle') { _%>
 cache:
-  key: "$CI_BUILD_REF_NAME"
-  paths:
-    - node_modules
-    - .gradle/wrapper
-    - .gradle/caches
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+        - node_modules
+        - .gradle/wrapper
+        - .gradle/caches
 <%_ } _%>
 <%_ if (buildTool == 'maven') { _%>
 cache:
-  key: "$CI_BUILD_REF_NAME"
-  paths:
-    - node_modules
-    - .maven
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+        - node_modules
+        - .maven
 <%_ } _%>
 stages:
-  - build
-  - test
-  - package
-  - release
-  - deploy
+    - build
+    - test
+    - package
+    - release
+    - deploy
 
 before_script:
-  - export GRADLE_USER_HOME=`pwd`/.gradle
-  - export MAVEN_USER_HOME=`pwd`/.maven <%_ if (!skipClient) { _%>
-  - npm install <%_ } _%>
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - export MAVEN_USER_HOME=`pwd`/.maven
+    <%_ if (!skipClient) { _%>
+    - npm install
+    <%_ } _%>
 
 <%_ if (buildTool == 'gradle') { _%>
 gradle-build:
@@ -51,8 +53,10 @@ gatling-test:
     allow_failure: true
     script:
         - ./gradlew gatlingRun -x cleanResources --no-daemon
-    before_script: <%_ if (!skipClient) { _%>
-        - npm install <%_ } _%>
+    before_script:
+        <%_ if (!skipClient) { _%>
+        - npm install
+        <%_ } _%>
         - ./gradlew bootRun &
     artifacts:
         paths:
@@ -90,8 +94,10 @@ gatling-test:
     allow_failure: true
     script:
         - ./mvnw gatling:execute -Dmaven.repo.local=$MAVEN_USER_HOME
-    before_script: <%_ if (!skipClient) { _%>
-        - npm install <%_ } _%>
+    before_script:
+        <%_ if (!skipClient) { _%>
+        - npm install
+        <%_ } _%>
         - ./mvnw &
     artifacts:
         paths:
