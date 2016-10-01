@@ -18,7 +18,6 @@
 
 This is a [JHipster](http://jhipster.github.io/) module, that is meant to be used in a JHipster application. This module is used to generate yaml files for Continuous Integration with :
 
-- [Travis-CI](https://travis-ci.org/)
 - [CircleCI](https://circleci.com/)
 - [Gitlab-CI](https://about.gitlab.com/gitlab-ci/)
 
