@@ -27,12 +27,12 @@ describe('JHipster generator CI', function () {
             .on('end', done);
         });
 
-        it('generates Dockerfile', function () {
+        it('generates CircleCI files', function () {
             assert.file('circle.yml');
         });
     });
 
-    describe('gitlab', function () {
+    describe('GitLab', function () {
         before(function (done) {
             helpers
             .run(path.join( __dirname, '../generators/app'))
@@ -49,7 +49,7 @@ describe('JHipster generator CI', function () {
             .on('end', done);
         });
 
-        it('generates Dockerfile', function () {
+        it('generates GitLab-ci files', function () {
             assert.file('.gitlab-ci.yml');
         });
     });
